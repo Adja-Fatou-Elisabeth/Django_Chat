@@ -31,14 +31,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'chatte',
-    'channels',
+    'chatbot',
 ]
 
 MIDDLEWARE = [
@@ -93,6 +93,13 @@ DATABASES = {
         'PASSWORD': 'kafe',
         'HOST': 'localhost',
         'PORT': '',
+        'TEST': {
+            'NAME': 'kafe_test',
+            'USER': 'kafe',
+            'PASSWORD': 'kafe',
+            'HOST': 'localhost',
+            'PORT': '',
+        }
     }
 }
 

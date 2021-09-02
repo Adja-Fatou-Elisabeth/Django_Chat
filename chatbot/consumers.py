@@ -3,7 +3,7 @@ import json
 from channels.generic.websocket import AsyncWebsocketConsumer
 from asgiref.sync import sync_to_async
 
-from .models import Message
+from .models import MessageChat
 
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
@@ -24,6 +24,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
             self.room_group_name,
             self.channel_name
         )
+        await self.close()
     
     # Receive message from web socket
     async def receive(self, text_data):
@@ -57,4 +58,4 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
     @sync_to_async
     def save_message(self, username, room, message):
-        Message.objects.create(username=username, room=room, content=message)
+        MessageChat.objects.create(username=username, room=room, content=message)
