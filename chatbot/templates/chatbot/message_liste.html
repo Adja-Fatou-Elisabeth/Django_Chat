@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load filters %}
 
 <html>
     <head>
@@ -28,8 +29,9 @@
                         <div class="">
                             <div id="" style="max-height: 300px;">
                                 {% for m in object_list %}
-                               Salle : {{ m.room }} </br>
-                               <b>{{ m.username }}</b> : {{ m.content }}<br>
+                                    Salle : {{ m.room }} </br>
+                                    <b>{{ m.username }}</b> : {{ m.content }}<br>
+                                    {{m|reponse_listes}}
                                 {% endfor %}
                             </div>
                         </div>

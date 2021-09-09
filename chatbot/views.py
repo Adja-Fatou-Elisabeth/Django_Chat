@@ -3,7 +3,7 @@ from django.views.generic import CreateView, ListView, UpdateView, DetailView, R
 from django.urls import reverse
 
 from .models import MessageChat
-from .forms import MessageChatForm
+from .forms import MessageChatForm, ReponseChatForm
 
 def index(request):
     return render(request, 'chatbot/index.html')
@@ -16,8 +16,22 @@ def room(request, room_name):
 
 def message_liste(request):
     context ={}
- 
-    # add the dictionary during initialization
     context["object_list"] = MessageChat.objects.all()
     return render(request, 'chatbot/message_liste.html',context)
 
+def create_view(request):
+    context ={}
+ 
+    form = ReponseChatForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+         
+    context['form']= form
+    return render(request, "reponse/create.html", context)
+
+def list_view(request):
+    context ={}
+ 
+    context["object_list"] = ReponseChat.objects.all()
+         
+    return render(request, "reponse/liste.html", context)

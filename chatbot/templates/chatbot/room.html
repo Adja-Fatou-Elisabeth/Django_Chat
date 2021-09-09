@@ -73,6 +73,10 @@
                 console.log('onmessage');
 
                 const data = JSON.parse(e.data);
+                console.log(e.data);
+                console.log(data.username);
+
+
 
                 if (data.message) {
                     document.querySelector('#chat-messages').innerHTML += ('<b>' + data.username + '</b>: ' + data.message + '<br>');
